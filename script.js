@@ -242,13 +242,7 @@ function disableAllOptions() {
 // --- Inicjalizacja Gry ---
 
 // Rozpoczęcie gry po załadowaniu DOM (wyświetla intro)
-document.addEventListener('DOMContentLoaded', () => {
-    displayStage(); // Wyświetl pierwszy etap (intro)
+startButton.addEventListener('click', startGame);
 
-    // Usuń przycisk 'start-button' z HTML, jeśli istnieje.
-    // Sugerowane: po prostu nie dodawaj go do index.html, jeśli gra ma startować automatycznie.
-    const startButtonInHtml = document.getElementById('start-button');
-    if (startButtonInHtml) {
-        startButtonInHtml.remove();
-    }
+
 });
