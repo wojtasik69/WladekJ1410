@@ -12,7 +12,7 @@ let playerChoices = {}; // Obiekt do przechowywania wyborów gracza
 const gameData = {
     // Etap początkowy - intro
     'intro': {
-        text: `Nazywasz się Władysław II Jagiełło, król Polski, najwyższy książę litewski.
+        text: `Nazywasz się Władysław II Jagiełło, król Polski, najwyższy książę litewski!
         Przed tobą stoi niezwykle trudne zadanie pokonania Zakonu Krzyżackiego w bitwie, która będzie znana jako słynna "Bitwa pod Grunwaldem".
 
         Jest lipiec 1410 roku. Napięcie osiągnęło punkt kulminacyjny. Krzyżacy, czując się silni
