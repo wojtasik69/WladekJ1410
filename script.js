@@ -12,7 +12,8 @@ let playerChoices = {}; // Obiekt do przechowywania wyborów gracza
 const gameData = {
     // Etap początkowy - intro
     'intro': {
-        text: `Nazywasz się Władysław II Jagiełło, król Polski, najwyższy książę litewski!
+        text: `
+        Nazywasz się Władysław II Jagiełło, król Polski, najwyższy książę litewski!
         Przed tobą stoi niezwykle trudne zadanie pokonania Zakonu Krzyżackiego w bitwie, 
         która będzie znana jako słynna "Bitwa pod Grunwaldem".
 
@@ -35,7 +36,8 @@ const gameData = {
     },
     // Rozpoczęcie gry i tło historyczne
     'start_game': {
-        text: `Budzisz się w swoim namiocie. Ze snu wytrącił cię hałas na zewnątrz.
+        text: `
+        Budzisz się w swoim namiocie. Ze snu wytrącił cię hałas na zewnątrz.
         Do twojego obozu przybyli dwaj heroldowie od Wielkiego Mistrza Zakonu Krzyżackiego, 
         Ulricha von Jungingena.
 
@@ -50,7 +52,8 @@ const gameData = {
     },
     // Etap 1: Przed Bitwą (Decyzje strategiczne) - Pytanie o heroldów
     'stage1': {
-        text: `Już miałeś wrócić do namiotu, gdy dwójka heroldów wręczyła ci dwa nagie miecze.
+        text: `
+        Już miałeś wrócić do namiotu, gdy dwójka heroldów wręczyła ci dwa nagie miecze.
         Zupełnie jakbyś nie miał swoich! Ta arogancja wymaga zdecydowanej odpowiedzi.
 
         Co zamierzasz odpowiedzieć?`,
@@ -62,7 +65,8 @@ const gameData = {
     },
     // Informacja po Dobrej Odpowiedzi w Etapie 1
     'stage1_info_good': {
-        text: `Zachowałeś spokój i godność, nie dając się sprowokować arogancji Krzyżaków.
+        text: `
+        Zachowałeś spokój i godność, nie dając się sprowokować arogancji Krzyżaków.
         Teraz jednak nadszedł czas, by podnieść morale twoich wojsk przed nadchodzącym starciem.`,
         options: [
             { text: "Dalej", nextStage: 'stage1_5_bogurodzica' } // Usunięto 'feedback: "neutral"'
@@ -71,7 +75,8 @@ const gameData = {
 
     // Etap 1.5: Bogurodzica
     'stage1_5_bogurodzica': {
-        text: `Napięcie rośnie z każdą chwilą. Patrzysz na swoje wojska – tysiące serc bijących
+        text: `
+        Napięcie rośnie z każdą chwilą. Patrzysz na swoje wojska – tysiące serc bijących
         w oczekiwaniu na bitwę. Zanim poprowadzisz ich do walki, musisz tchnąć w nich ducha jedności,
         wiary i odwagi.
 
@@ -86,7 +91,8 @@ const gameData = {
     },
     // Informacja po Dobrej Odpowiedzi w Etapie 1.5
     'stage1_5_info_good': {
-        text: `To była doskonała decyzja! Pieśń rozbrzmiała nad polami Grunwaldu,
+        text: `
+        To była doskonała decyzja! Pieśń rozbrzmiała nad polami Grunwaldu,
         na zawsze zapisując się na kartach historii i podręcznikach języka polskiego.
 
         Jej dźwięk przeniknął serca rycerzy, budząc w nich głębokie poczucie jedności
@@ -99,7 +105,8 @@ const gameData = {
 
     // Etap 2: W trakcie bitwy (Decyzje taktyczne - właściwa bitwa)
     'stage2_battle': {
-        text: `Bitwa rozpoczęła się z impetem! Prawe skrzydło, dowodzone przez Księcia Witolda,
+        text: `
+        Bitwa rozpoczęła się z impetem! Prawe skrzydło, dowodzone przez Księcia Witolda,
         ruszyło jako pierwsze. Szarża litewsko-ruskich chorągwi uderzyła w krzyżackie szeregi.
         Artyleria Zakonu, spiesznie ustawiona, zdołała oddać zaledwie dwie salwy,
         które zatonęły w impetach naszych wojsk. Zacięta walka rozgorzała na dobre.
@@ -121,7 +128,8 @@ const gameData = {
     },
     // Informacja po Dobrej Odpowiedzi w Etapie 2
     'stage2_info_good': {
-        text: `Twoja strategiczna intuicja okazała się trafna. Widzisz, jak wojska krzyżackie,
+        text: `
+        Twoja strategiczna intuicja okazała się trafna. Widzisz, jak wojska krzyżackie,
         zwiedzione pozornym odwrotem Litwinów, rzucają się w chaotyczny pościg.
 
         Ich szeregi rozciągają się, a duma zaślepia ich tak, że nie dostrzegają pułapki.
@@ -132,7 +140,8 @@ const gameData = {
     },
     // Etap 3: Decydujące uderzenie
     'stage3': {
-        text: `Bitwa weszła w decydującą fazę. Widzisz, jak Wielki Mistrz Ulrich von Jungingen
+        text: `
+        Bitwa weszła w decydującą fazę. Widzisz, jak Wielki Mistrz Ulrich von Jungingen
         rzuca do boju swój ostatni atut – odwody 16 chorągwi. Atak ten uderza w centrum
         twoich wojsk oraz w lewe skrzydło. Twoi rycerze walczą bohatersko, ale napór jest olbrzymi.
         Musisz działać, aby przechylić szalę zwycięstwa!
@@ -150,7 +159,8 @@ const gameData = {
     },
     // Zakończenie: Zwycięstwo
     'ending_victory': {
-        text: `Powietrze drży od okrzyków triumfu, Królu Władysławie! Twoja decyzja
+        text: `
+        Powietrze drży od okrzyków triumfu, Królu Władysławie! Twoja decyzja
         o wprowadzeniu odwodów okazała się strzałem w dziesiątkę.
 
         Widzisz, jak twoje wojska, niczym potężna fala, zalały ostatnie punkty oporu Krzyżaków.
@@ -170,7 +180,8 @@ const gameData = {
     },
     // Komunikat o złej odpowiedzi
     'bad_answer_feedback': {
-        text: `Niestety, ta odpowiedź nie zapewni ci długiego panowania. Spróbuj ponownie!`,
+        text: `
+        Niestety, ta odpowiedź nie zapewni ci długiego panowania. Spróbuj ponownie!`,
         options: [
             { text: "Powróć do pytania", feedback: "neutral", nextStage: null } // nextStage będzie ustawiony dynamicznie
         ]
