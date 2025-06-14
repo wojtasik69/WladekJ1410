@@ -1,0 +1,80 @@
+/* Stylizacja CSS dla gry tekstowej Bitwa pod Grunwaldem */
+
+body {
+    font-family: 'Georgia', serif;
+    background-color: #f0e6d2; /* Jasny beż */
+    color: #3e2723; /* Ciemny brąz */
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.game-container {
+    background-color: #fff8e1; /* Bardzo jasny krem */
+    border: 2px solid #a1887f; /* Brązowa ramka */
+    border-radius: 8px;
+    padding: 30px;
+    max-width: 800px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+h1 {
+    color: #5d4037; /* Ciemniejszy brąz */
+    margin-bottom: 20px;
+    font-size: 2.5em;
+}
+
+#game-output {
+    background-color: #eceff1; /* Jasnoszary */
+    border: 1px solid #bcaaa4; /* Szarobrązowa ramka */
+    padding: 20px;
+    min-height: 150px;
+    text-align: left;
+    margin-bottom: 20px;
+    overflow-y: auto;
+    max-height: 300px; /* Ograniczenie wysokości okna tekstu */
+    line-height: 1.6;
+    white-space: pre-wrap; /* Zachowanie formatowania linii */
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.options-container button {
+    background-color: #795548; /* Średni brąz */
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    margin: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease;
+}
+
+.options-container button:hover {
+    background-color: #5d4037; /* Ciemniejszy brąz */
+}
+
+.options-container button:disabled {
+    background-color: #bcaaa4;
+    cursor: not-allowed;
+}
+
+/* Klasa do ukrywania elementów */
+.hidden {
+    display: none;
+}
+
+#start-button {
+    background-color: #4CAF50; /* Zielony */
+    font-size: 1.3em;
+    padding: 15px 30px;
+}
+
+#start-button:hover {
+    background-color: #45a049;
+}
