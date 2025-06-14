@@ -13,7 +13,8 @@ const gameData = {
     // Etap początkowy - intro
     'intro': {
         text: `Nazywasz się Władysław II Jagiełło, król Polski, najwyższy książę litewski!
-        Przed tobą stoi niezwykle trudne zadanie pokonania Zakonu Krzyżackiego w bitwie, która będzie znana jako słynna "Bitwa pod Grunwaldem".
+        Przed tobą stoi niezwykle trudne zadanie pokonania Zakonu Krzyżackiego w bitwie, 
+        która będzie znana jako słynna "Bitwa pod Grunwaldem".
 
         Jest lipiec 1410 roku. Napięcie osiągnęło punkt kulminacyjny. Krzyżacy, czując się silni
         i pewni swego, zwołali rycerstwo z całej Europy Zachodniej na "krucjatę" przeciwko tobie
@@ -26,7 +27,8 @@ const gameData = {
 
         Naprzeciwko ciebie, na polach pod Grunwaldem, stoi wojsko Zakonu – ciężkozbrojni rycerze,
         wspierani przez zaciężnych z całej Europy. W powietrzu czuć zapach nadchodzącej bitwy.
-        Losy twojego królestwa i całej Europy zależą od twoich decyzji. Jesteś gotowy zmierzyć się z tym wyzwaniem?`,
+        Losy twojego królestwa i całej Europy zależą od twoich decyzji. 
+        Jesteś gotowy zmierzyć się z tym wyzwaniem?`,
         options: [
             { text: "Dalej", nextStage: 'start_game' } // Usunięto 'feedback: "neutral"'
         ]
@@ -34,7 +36,8 @@ const gameData = {
     // Rozpoczęcie gry i tło historyczne
     'start_game': {
         text: `Budzisz się w swoim namiocie. Ze snu wytrącił cię hałas na zewnątrz.
-        Do twojego obozu przybyli dwaj heroldowie od Wielkiego Mistrza Zakonu Krzyżackiego, Ulricha von Jungingena.
+        Do twojego obozu przybyli dwaj heroldowie od Wielkiego Mistrza Zakonu Krzyżackiego, 
+        Ulricha von Jungingena.
 
         Mają czelność twierdzić, że z tchórzostwa próbujesz odłożyć bitwę w czasie.
         To nieprawda! Odciągasz ją, aby słońce smażyło Krzyżaków, podczas gdy ty i twoi żołnierze
