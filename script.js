@@ -2,138 +2,113 @@
 
 // --- Elementy DOM ---
 const gameOutput = document.getElementById('game-output');
-const startButton = document.getElementById('start-button');
-const option1Button = document.getElementById('option1');
-const option2Button = document.getElementById('option2');
-const optionsContainer = document.querySelector('.options-container'); // Kontener przycisków
+const optionsContainer = document.querySelector('.options-container');
 
 // --- Stan Gry ---
 let currentStageId = 'intro'; // Początkowy identyfikator etapu
-let playerChoices = {}; // Obiekt do przechowywania wyborów gracza, jeśli potrzebne do przyszłych zależności
+let playerChoices = {}; // Obiekt do przechowywania wyborów gracza
 
 // --- Dane Gry (można łatwo rozbudowywać) ---
 const gameData = {
     // Etap początkowy - intro
     'intro': {
-        text: `Witaj, dostojny Władysławie II Jagiełło!
-Jesteś świadkiem narastającego konfliktu z Zakonem Krzyżackim. Twoje decyzje zadecydują o losach Królestwa Polskiego i Wielkiego Księstwa Litewskiego.
-Przygotuj się na najważniejsze starcie w historii...`,
+        text: `Nazywasz się Władysław II Jagiełło, król Polski, najwyższy książę litewski. Przed tobą stoi niezwykle trudne zadanie pokonania Zakonu Krzyżackiego
+        w bitwie która będzie znana jako słynna "Bitwa pod Grunwaldem"
+        Jest lipiec 1410 roku. Napięcie osiągnęło punkt kulminacyjny. 
+        Krzyżacy, czując się silni i pewni swego, zwołali rycerstwo z całej Europy Zachodniej na "krucjatę" przeciwko tobie i twojemu zjednoczonemu królestwu.
+        Pomimo, że zawarłeś Unię z Litwą, a później Unię Horodelską, jednocząc oba państwa i przyjmując chrzest, nie osłabiło to argumentów Krzyżaków o „pogańskiej” Litwie, 
+        jedynie zaogniło ich gniew. Ich cel jest jasny: zniszczyć twoje królestwo i przejąć kontrolę nad strategicznymi szlakami handlowymi i ziemiami.
+        Naprzeciwko ciebie, na polach pod Grunwaldem, stoi wojsko Zakonu – ciężkozbrojni rycerze, wspierani przez zaciężnych z całej Europy. W powietrzu czuć zapach 
+        nadchodzącej bitwy, losy twojego królestwa i całej Europy zależą od twoich decyzji. Jesteś gotowy zmierzyć się z tym wyzwaniem?`,
         options: [
-            { text: "Rozpocznij Bitwę pod Grunwaldem", nextStage: 'battleStart' }
+            { text: "", feedback: "neutral", nextStage: 'start_game' }
         ]
     },
-    // Etap rozpoczęcia bitwy
-    'battleStart': {
-        text: `--- Bitwa pod Grunwaldem ---
-Jest rok 1410. Napięcie między Polską i Litwą a Zakonem Krzyżackim osiągnęło punkt krytyczny.
-Krzyżacy, pod pretekstem szerzenia chrześcijaństwa, od dawna najeżdżają ziemie polskie i litewskie, dążąc do dominacji w regionie.
-Twoja armia, połączone siły polsko-litewskie, zbliża się do pozycji krzyżackich.
-Musisz podjąć kluczowe decyzje taktyczne, które zaważą na wyniku bitwy.`,
+    // Rozpoczęcie gry i tło historyczne
+    'start_game': {
+        text: `Budzisz się w swoim namiocie. Ze snu wytrącił cię hałas na zewątrz. Do twojego obozu przybyli dwaj heroldowie od Wielkiego Mistrza Zakonu Krzyżackiego, 
+        Ulricha von Jungingena. Mają czelność twierdzić, że z tchórzostwa próbujesz odłożyć bitwę w czasie. To nieprawda! Odciągasz ją aby słońce smażyło krzyżaków, podczas
+        gdy ty i twoi żołnierze odpoczywacie w cieniu lasu. Krzyżacy na pewno o tym wiedzą i chcą cię sprowokować do nieprzemyślanego ataku!`,
         options: [
-            { text: "Dalej...", nextStage: 'stage1' }
+            { text: "", feedback: "neutral", nextStage: 'stage1' }
         ]
     },
-    // Etap 1: Przed Bitwą
+    // Etap 1: Przed Bitwą (Decyzje strategiczne)
     'stage1': {
-        text: `--- Etap 1: Przed Bitwą ---
-Twoi zwiadowcy donoszą, że armia krzyżacka jest już w zasięgu wzroku. Jesteś na czele potężnej, choć zróżnicowanej armii.
-Co robisz, aby przygotować wojsko?`,
+        text: `Już miałeś wrócić do namiotu, gdy dwójka heroldów wręczyła ci dwa nagie miecze. Zupełnie jakbyś nie miał swoich! Ta arogancja wymaga zdecydowanej odpowiedzi. 
+        Co zamierzasz odpowiedzieć>`,
         options: [
-            { text: "1. Rozstawiasz wojska w tradycyjnym szyku.", choiceKey: "strategia", choiceValue: "tradycyjny", nextStage: 'stage1_info1' },
-            { text: "2. Stosujesz podstęp, pozorując ucieczkę części wojsk.", choiceKey: "strategia", choiceValue: "podstep", nextStage: 'stage1_info2' }
+            { text: "Zachowaj spokój: `Chociaż posiadam mieczy pod dostatkiem, to jednak przyjmuje te, które wy mi przysłaliście`", feedback: "good", nextStage: 'stage1_info_good' },
+            { text: "Zaoferuj wpuszczenie krzyżaków do lasu: `Sprawiedlim będzie jeżeli odpoczniecie w lesie, my zaś wyjdziemy na słońce.", feedback: "bad", nextStage: 'stage1' }, // Wraca do tego samego etapu
+            { text: "Pozbaw heroldów głów nowo otrzymanymi mieczami: `W rzeczy samej, przydatny przynieśliście podarunek!", feedback: "bad", nextStage: 'stage1' } // Wraca do tego samego etapu
         ]
     },
-    // Informacja historyczna po wyborze 1 w etapie 1
-    'stage1_info1': {
-        text: `Wybrałeś tradycyjny szyk. Twoje wojska są gotowe do frontalnego starcia. Krzyżacy widzą całą potęgę Twojej armii.
-Informacja historyczna: Wojska polsko-litewskie były liczniejsze, ale Krzyżacy mieli przewagę w ciężkiej kawalerii i artylerii. Jagiełło musiał być ostrożny.`,
+    // Informacja po Dobrej Odpowiedzi w Etapie 1
+    'stage1_info_good': {
+        text: ``,
         options: [
-            { text: "Dalej...", nextStage: 'stage2_intro' }
+            { text: "Zachowałeś spokój i godność, nie dając się sprowokować arogancji Krzyżaków."
+            "Teraz jednak nadszedł czas, by podnieść morale twoich wojsk przed nadchodzącym starciem.", feedback: "neutral", nextStage: 'stage2' }
         ]
     },
-    // Informacja historyczna po wyborze 2 w etapie 1
-    'stage1_info2': {
-        text: `Zdecydowałeś się na podstęp! Część Twoich wojsk pozoruje odwrót, co ma sprowokować Krzyżaków do przedwczesnego ataku.
-Informacja historyczna: Jest to nawiązanie do taktyki, która została rzekomo użyta pod Grunwaldem - pozorowanego odwrotu litewskiej lekkiej jazdy, która wciągnęła część sił krzyżackich.`,
+
+ // Etap 1,5: Bogurodzica
+    'stage2': {
+        text: `Napięcie rośnie z każdą chwilą. Patrzysz na swoje wojska – tysiące serc bijących w oczekiwaniu na bitwę. Zanim poprowadzisz ich do walki, 
+        musisz tchnąć w nich ducha jedności, wiary i odwagi. Potrzebujesz czegoś, co poruszy ich dusze, zjednoczy pod wspólnym sztandarem i sprawi, 
+        że zapomną o strachu. Co najlepiej podniesie na duchu rycerzy polskich, litewskich, tatarskich i ruskich, stając się symbolem waszej wspólnej siły?`,
         options: [
-            { text: "Dalej...", nextStage: 'stage2_intro' }
+            { text: "Bogurodzica, najstarszy zachowany polski tekst poetycki i pieśń religijna", feedback: "good", nextStage: 'stage2_info_good' },
+            { text: "„Etiuda rewolucyjna” (Op. 10 nr 12), „Scherzo b-moll” napisane prze Fryderyka Chopina", feedback: "bad", nextStage: 'stage2' },
+            { text: "Przez twe oczy zielone, utwór zespołu Akcent w wykonaniu Zenona Martyniuka", feedback: "bad", nextStage: 'stage2' }
         ]
     },
-    // Wprowadzenie do etapu 2
-    'stage2_intro': {
-        text: `--- Etap 2: Rozpoczyna się Bitwa! ---
-Grzmot dział i szczęk oręża wypełniają powietrze. Obie armie rzuciły się na siebie z furią.`,
+    // Informacja po Dobrej Odpowiedzi w Etapie 1,5
+    'stage2_info_good': {
+        text: `To była doskonała decyzja! Pieśń rozbrzmiała nad polami Grunwaldu, na zawsze zapisując się na kartach historii i podręcznikach jezyka polskiego. 
+        Jej dźwięk przeniknął serca rycerzy, budząc w nich głębokie poczucie jedności i wspólnego celu. Dla Krzyżaków natomiast, "Bogurodzica" stała się zwiastunem nadchodzącej klęski. 
+        Twoi rycerze ruszyli do ataku!`,
         options: [
-            { text: "Dalej...", nextStage: 'stage2_decision' }
+            { text: "", feedback: "neutral", nextStage: 'stage3' }
         ]
     },
-    // Etap 2: Decyzja w trakcie bitwy (zależy od strategii)
-    'stage2_decision': {
-        text: (choices) => { // Funkcja zwracająca tekst w zależności od poprzedniego wyboru
-            if (choices.strategia === "tradycyjny") {
-                return `Mimo Twojej potęgi, Krzyżacy stawiają zaciekły opór. Ich ciężka kawaleria uderza z niezwykłą siłą.
-Co robisz teraz, aby przełamać ich obronę?`;
-            } else { // podstep
-                return `Twój podstęp zadziałał! Część wojsk krzyżackich ruszyła w pościg za uciekającymi, łamiąc swój szyk.
-Teraz jest moment na decydujący cios. Co rozkazujesz?`;
-            }
-        },
-        options: (choices) => { // Funkcja zwracająca opcje w zależności od poprzedniego wyboru
-            if (choices.strategia === "tradycyjny") {
-                return [
-                    { text: "1. Wysyłasz posiłki na najgorętsze odcinki.", nextStage: 'ending_zacieta' },
-                    { text: "2. Rozkazujesz chorągwiom litewskim flankować wroga.", nextStage: 'ending_flanka' }
-                ];
-            } else { // podstep
-                return [
-                    { text: "1. Atakujesz z całą siłą, wykorzystując rozerwanie szyków wroga.", nextStage: 'ending_atak' },
-                    { text: "2. Czekasz na powrót Litwinów, aby uderzyć całością sił.", nextStage: 'ending_powrot' }
-                ];
-            }
-        }
-    },
-    // --- Zakończenia ---
-    'ending_zacieta': {
-        text: `--- Zakończenie: Triumf pod Grunwaldem! ---
-Bitwa dobiega końca. Kurz osiada, a na polu pozostają tysiące poległych.
-Mimo heroicznego oporu Krzyżaków, Twoja determinacja i liczebność wojsk doprowadziły do ich klęski. To było krwawe, ale zwycięskie starcie!`,
+    
+    // Etap 2: W trakcie bitwy (Decyzje taktyczne)
+    'stage2': {
+        text: ``,
         options: [
-            { text: "Zobacz podsumowanie bitwy", nextStage: 'finalMessage' }
+            { text: "", feedback: "good", nextStage: 'stage2_info_good' },
+            { text: "", feedback: "bad", nextStage: 'stage2' },
+            { text: "", feedback: "bad", nextStage: 'stage2' }
         ]
     },
-    'ending_flanka': {
-        text: `--- Zakończenie: Triumf pod Grunwaldem! ---
-Bitwa dobiega końca. Kurz osiada, a na polu pozostają tysiące poległych.
-Genialny manewr flankujący zdezorientował Krzyżaków, a Twoje wojska dokończyły dzieła zniszczenia. To było zwycięstwo taktyki!`,
+    // Informacja po Dobrej Odpowiedzi w Etapie 2
+    'stage2_info_good': {
+        text: ``,
         options: [
-            { text: "Zobacz podsumowanie bitwy", nextStage: 'finalMessage' }
+            { text: "", feedback: "neutral", nextStage: 'stage3' }
         ]
     },
-    'ending_atak': {
-        text: `--- Zakończenie: Triumf pod Grunwaldem! ---
-Bitwa dobiega końca. Kurz osiada, a na polu pozostają tysiące poległych.
-Wykorzystując zamieszanie w szeregach wroga, zadałeś decydujący cios. Szybka i brutalna akcja doprowadziła do rozgromienia Krzyżaków!`,
+    // Etap 3: Decydujące uderzenie
+    'stage3': {
+        text: ``,
         options: [
-            { text: "Zobacz podsumowanie bitwy", nextStage: 'finalMessage' }
+            { text: "", feedback: "good", nextStage: 'ending_victory' },
+            { text: "", feedback: "bad", nextStage: 'stage3' },
+            { text: "", feedback: "bad", nextStage: 'stage3' }
         ]
     },
-    'ending_powrot': {
-        text: `--- Zakończenie: Triumf pod Grunwaldem! ---
-Bitwa dobiega końca. Kurz osiada, a na polu pozostają tysiące poległych.
-Twoja cierpliwość i zaufanie do sojuszników opłaciły się. Połączone siły zmiażdżyły wroga. To było zwycięstwo jedności!`,
-        options: [
-            { text: "Zobacz podsumowanie bitwy", nextStage: 'finalMessage' }
-        ]
+    // Zakończenie: Zwycięstwo
+    'ending_victory': {
+        text: ``,
+        options: [] // Koniec gry, brak dalszych opcji
     },
-    // Końcowa wiadomość i podsumowanie historyczne
-    'finalMessage': {
-        text: `*** Władysławie Jagiełło, odniosłeś wspaniałe zwycięstwo! ***
-Bitwa pod Grunwaldem, stoczona 15 lipca 1410 roku, była jedną z największych bitew średniowiecznej Europy.
-Zakończyła się druzgocącą klęską Zakonu Krzyżackiego, co znacząco osłabiło jego potęgę i zmieniło układ sił w Europie Środkowo-Wschodniej.
-Zwycięstwo to było efektem doskonałego dowodzenia, liczebnej przewagi wojsk polsko-litewskich, ale także morale żołnierzy walczących za swoją ojczyznę.
-Gratulacje, Królu! Zapiszesz się na kartach historii jako pogromca Krzyżaków!
-Dziękuję za grę! Odśwież stronę, aby zagrać ponownie.`,
-        options: [] // Brak opcji na końcu gry
+    // Komunikat o złej odpowiedzi
+    'bad_answer_feedback': {
+        text: ``,
+        options: [
+            { text: "", feedback: "neutral", nextStage: null } // nextStage będzie ustawiony dynamicznie
+        ]
     }
 };
 
@@ -145,13 +120,13 @@ Dziękuję za grę! Odśwież stronę, aby zagrać ponownie.`,
  * @param {number} delay - Opóźnienie między znakami w milisekundach.
  * @returns {Promise<void>} - Promise, który rozwiązuje się po zakończeniu pisania.
  */
-function typeText(text, delay = 50) {
+function typeText(text, delay = 30) {
     let i = 0;
-    gameOutput.textContent = '';
+    gameOutput.innerHTML = '';
     return new Promise(resolve => {
         const interval = setInterval(() => {
             if (i < text.length) {
-                gameOutput.textContent += text.charAt(i);
+                gameOutput.innerHTML += text.charAt(i);
                 gameOutput.scrollTop = gameOutput.scrollHeight;
                 i++;
             } else {
@@ -172,14 +147,12 @@ async function displayStage() {
         return;
     }
 
-    // Określ tekst etapu (może być stringiem lub funkcją)
     const stageText = typeof stage.text === 'function' ? stage.text(playerChoices) : stage.text;
     await typeText(stageText);
 
     // Wyczyść stare opcje
     optionsContainer.innerHTML = '';
 
-    // Określ opcje etapu (może być tablicą lub funkcją)
     const stageOptions = typeof stage.options === 'function' ? stage.options(playerChoices) : stage.options;
 
     // Utwórz przyciski dla nowych opcji
@@ -187,13 +160,13 @@ async function displayStage() {
         stageOptions.forEach((option, index) => {
             const button = document.createElement('button');
             button.textContent = option.text;
-            button.classList.add('game-option'); // Dodajemy klasę, żeby łatwo je ukryć/pokazać
-            button.dataset.optionIndex = index; // Zapamiętujemy indeks opcji
+            button.classList.add('game-option');
+            button.dataset.optionIndex = index;
             button.addEventListener('click', () => handleChoice(option));
             optionsContainer.appendChild(button);
         });
     } else {
-        // Jeśli nie ma opcji, to koniec gry, można wyłączyć przyciski
+        // Jeśli nie ma opcji, to koniec gry
         disableAllOptions();
     }
     showOptions();
@@ -204,64 +177,60 @@ async function displayStage() {
  * @param {object} chosenOption - Wybrana opcja z obiektu gameData.
  */
 async function handleChoice(chosenOption) {
-    disableAllOptions(); // Wyłącz przyciski, aby zapobiec wielokrotnym kliknięciom
+    disableAllOptions(); // Wyłącz przyciski
 
-    // Zapisz wybór gracza (jeśli zdefiniowano w gameData)
-    if (chosenOption.choiceKey && chosenOption.choiceValue) {
-        playerChoices[chosenOption.choiceKey] = chosenOption.choiceValue;
+    // Jeśli to zła odpowiedź
+    if (chosenOption.feedback === "bad") {
+        const previousStageId = currentStageId; // Zapisz ID poprzedniego pytania
+        currentStageId = 'bad_answer_feedback'; // Przejdź do komunikatu o złej odpowiedzi
+        gameData['bad_answer_feedback'].options[0].nextStage = previousStageId; // Ustaw powrót do poprzedniego pytania
+
+        await new Promise(r => setTimeout(r, 700));
+        await displayStage(); // Wyświetl komunikat o złej odpowiedzi
+    } else {
+        // Jeśli to dobra odpowiedź lub zwykłe przejście
+        if (chosenOption.choiceKey && chosenOption.choiceValue) {
+            playerChoices[chosenOption.choiceKey] = chosenOption.choiceValue;
+        }
+
+        await new Promise(r => setTimeout(r, 700));
+        currentStageId = chosenOption.nextStage; // Ustaw następny etap
+        displayStage(); // Wyświetl nowy etap
     }
-
-    await new Promise(r => setTimeout(r, 700)); // Krótka pauza po wyborze
-
-    currentStageId = chosenOption.nextStage; // Ustaw następny etap
-    displayStage(); // Wyświetl nowy etap
 }
 
 /**
- * Ukrywa przycisk start i pokazuje opcje (oprócz samego przycisku start)
+ * Pokazuje przyciski opcji.
  */
 function showOptions() {
-    startButton.classList.add('hidden'); // Ukryj przycisk start
     const optionButtons = document.querySelectorAll('.game-option');
     optionButtons.forEach(button => {
-        button.classList.remove('hidden');
+        button.classList.remove('hidden'); // Upewnij się, że są widoczne
         button.disabled = false;
     });
 }
 
 /**
- * Ukrywa wszystkie przyciski opcji i dezaktywuje je.
+ * Ukrywa i dezaktywuje wszystkie przyciski opcji.
  */
 function disableAllOptions() {
     const optionButtons = document.querySelectorAll('.game-option');
     optionButtons.forEach(button => {
         button.disabled = true;
+        // Opcjonalnie: można je też ukryć, jeśli chcemy, aby zniknęły po kliknięciu
+        // button.classList.add('hidden');
     });
-    // Można też dodać ukrywanie, jeśli chcemy, aby zniknęły
-    // setTimeout(() => {
-    //     optionButtons.forEach(button => button.classList.add('hidden'));
-    // }, 500);
 }
-
 
 // --- Inicjalizacja Gry ---
 
-// Rozpocznij grę po kliknięciu przycisku start
-startButton.addEventListener('click', () => {
-    startButton.classList.add('hidden');
-    displayStage(); // Wyświetl pierwszy etap (intro)
-});
-
-// W początkowym stanie ukryj przyciski opcji, dopóki gra się nie rozpocznie
+// Rozpoczęcie gry po załadowaniu DOM (wyświetla intro)
 document.addEventListener('DOMContentLoaded', () => {
-    // Upewnij się, że przyciski opcji są ukryte na starcie
-    option1Button.classList.add('hidden');
-    option2Button.classList.add('hidden');
-    option1Button.disabled = true;
-    option2Button.disabled = true;
+    displayStage(); // Wyświetl pierwszy etap (intro)
 
-    // Przygotuj startowy przycisk, jeśli już go nie ma w HTML
-    if (!startButton.parentElement.contains(startButton)) {
-        optionsContainer.appendChild(startButton);
+    // Upewnij się, że inne przyciski są początkowo ukryte
+    const startButtonInHtml = document.getElementById('start-button');
+    if (startButtonInHtml) {
+        startButtonInHtml.remove(); // Usuń startowy przycisk, jeśli istnieje w HTML
     }
 });
