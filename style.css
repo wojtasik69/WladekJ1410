@@ -1,9 +1,9 @@
-/* Stylizacja CSS dla gry tekstowej Bitwa pod Grunwaldem */
+/* Stylizacja CSS dla gry tekstowej Bitwa pod Grunwaldem - Bojowe Barwy */
 
 body {
-    font-family: 'Georgia', serif;
-    background-color: #f0e6d2; /* Jasny beż */
-    color: #3e2723; /* Ciemny brąz */
+    font-family: 'Georgia', serif; /* Klasyczna, poważna czcionka */
+    background-color: #36201B; /* Ciemny, głęboki brąz - kolor ziemi, gleby */
+    color: #F8F8F8; /* Jasny, prawie biały tekst dla kontrastu */
     margin: 0;
     padding: 20px;
     display: flex;
@@ -11,70 +11,85 @@ body {
     align-items: center;
     min-height: 100vh;
     flex-direction: column;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Jan_Matejko%2C_Bitwa_pod_Grunwaldem.jpg/1280px-Jan_Matejko%2C_Bitwa_pod_Grunwaldem.jpg'); /* Tło z bitwą */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Tło pozostaje na miejscu podczas przewijania */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Lekki cień pod tekstem dla lepszej czytelności na tle */
 }
 
 .game-container {
-    background-color: #fff8e1; /* Bardzo jasny krem */
-    border: 2px solid #a1887f; /* Brązowa ramka */
-    border-radius: 8px;
-    padding: 30px;
-    max-width: 800px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    background-color: rgba(30, 20, 15, 0.9); /* Bardzo ciemny brąz z półprzezroczystością */
+    border: 3px solid #8B4513; /* Ciemny miedziany brąz, symbolizujący opancerzenie */
+    border-radius: 10px;
+    padding: 40px;
+    max-width: 850px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(255, 215, 0, 0.2); /* Cień i delikatna poświata złota */
     text-align: center;
+    backdrop-filter: blur(3px); /* Delikatne rozmycie tła za kontenerem */
 }
 
 h1 {
-    color: #5d4037; /* Ciemniejszy brąz */
-    margin-bottom: 20px;
-    font-size: 2.5em;
+    color: #B22222; /* Głęboka czerwień - symbolizująca krew, odwagę, wojnę */
+    margin-bottom: 25px;
+    font-size: 3em;
+    text-transform: uppercase; /* Duże litery dla większego impaktu */
+    letter-spacing: 2px; /* Rozstrzelenie liter */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 #game-output {
-    background-color: #eceff1; /* Jasnoszary */
-    border: 1px solid #bcaaa4; /* Szarobrązowa ramka */
-    padding: 20px;
-    min-height: 150px;
+    background-color: rgba(60, 40, 30, 0.85); /* Ciemniejszy, lekko przezroczysty brąz */
+    border: 1px solid #A0522D; /* Rdzawobrązowa ramka */
+    padding: 25px;
+    min-height: 180px;
     text-align: left;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     overflow-y: auto;
-    max-height: 300px; /* Ograniczenie wysokości okna tekstu */
-    line-height: 1.6;
-    white-space: pre-wrap; /* Zachowanie formatowania linii */
-    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-height: 350px;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.3);
+    color: #E0E0E0; /* Jasny tekst w oknie wyjścia */
 }
 
 .options-container button {
-    background-color: #795548; /* Średni brąz */
+    background-color: #8B0000; /* Intensywna, ciemna czerwień */
     color: white;
-    border: none;
-    padding: 12px 25px;
-    margin: 8px;
-    border-radius: 5px;
+    border: 2px solid #FFD700; /* Złota ramka, nawiązująca do królewskości */
+    padding: 15px 30px;
+    margin: 10px;
+    border-radius: 8px;
     cursor: pointer;
-    font-size: 1.1em;
-    transition: background-color 0.3s ease;
+    font-size: 1.2em;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
 }
 
 .options-container button:hover {
-    background-color: #5d4037; /* Ciemniejszy brąz */
+    background-color: #A00000; /* Jaśniejsza czerwień przy najechaniu */
+    transform: translateY(-3px); /* Lekkie uniesienie przycisku */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
+}
+
+.options-container button:active {
+    background-color: #700000; /* Jeszcze ciemniejsza czerwień przy kliknięciu */
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
 }
 
 .options-container button:disabled {
-    background-color: #bcaaa4;
+    background-color: #5C0000; /* Bardzo ciemna czerwień dla wyłączonych przycisków */
+    border-color: #694C1B; /* Zgaszone złoto */
     cursor: not-allowed;
+    opacity: 0.7;
+    box-shadow: none;
 }
 
 /* Klasa do ukrywania elementów */
 .hidden {
     display: none;
-}
-
-#start-button {
-    background-color: #4CAF50; /* Zielony */
-    font-size: 1.3em;
-    padding: 15px 30px;
-}
-
-#start-button:hover {
-    background-color: #45a049;
 }
