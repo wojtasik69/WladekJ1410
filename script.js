@@ -21,7 +21,7 @@ const gameData = {
         Naprzeciwko ciebie, na polach pod Grunwaldem, stoi wojsko Zakonu – ciężkozbrojni rycerze, wspierani przez zaciężnych z całej Europy. W powietrzu czuć zapach 
         nadchodzącej bitwy, losy twojego królestwa i całej Europy zależą od twoich decyzji. Jesteś gotowy zmierzyć się z tym wyzwaniem?`,
         options: [
-            { text: "", feedback: "neutral", nextStage: 'start_game' }
+            { text: "Dalej", feedback: "neutral", nextStage: 'start_game' }
         ]
     },
     // Rozpoczęcie gry i tło historyczne
@@ -30,7 +30,7 @@ const gameData = {
         Ulricha von Jungingena. Mają czelność twierdzić, że z tchórzostwa próbujesz odłożyć bitwę w czasie. To nieprawda! Odciągasz ją aby słońce smażyło krzyżaków, podczas
         gdy ty i twoi żołnierze odpoczywacie w cieniu lasu. Krzyżacy na pewno o tym wiedzą i chcą cię sprowokować do nieprzemyślanego ataku!`,
         options: [
-            { text: "", feedback: "neutral", nextStage: 'stage1' }
+            { text: "Dalej", feedback: "neutral", nextStage: 'stage1' }
         ]
     },
     // Etap 1: Przed Bitwą (Decyzje strategiczne)
@@ -45,10 +45,10 @@ const gameData = {
     },
     // Informacja po Dobrej Odpowiedzi w Etapie 1
     'stage1_info_good': {
-        text: ``,
+        text: `Zachowałeś spokój i godność, nie dając się sprowokować arogancji Krzyżaków."
+            "Teraz jednak nadszedł czas, by podnieść morale twoich wojsk przed nadchodzącym starciem.`,
         options: [
-            { text: "Zachowałeś spokój i godność, nie dając się sprowokować arogancji Krzyżaków."
-            "Teraz jednak nadszedł czas, by podnieść morale twoich wojsk przed nadchodzącym starciem.", feedback: "neutral", nextStage: 'stage2' }
+            { text: "Dalej", feedback: "neutral", nextStage: 'stage2' }
         ]
     },
 
@@ -66,48 +66,65 @@ const gameData = {
     // Informacja po Dobrej Odpowiedzi w Etapie 1,5
     'stage2_info_good': {
         text: `To była doskonała decyzja! Pieśń rozbrzmiała nad polami Grunwaldu, na zawsze zapisując się na kartach historii i podręcznikach jezyka polskiego. 
-        Jej dźwięk przeniknął serca rycerzy, budząc w nich głębokie poczucie jedności i wspólnego celu. Dla Krzyżaków natomiast, "Bogurodzica" stała się zwiastunem nadchodzącej klęski. 
-        Twoi rycerze ruszyli do ataku!`,
+        Jej dźwięk przeniknął serca rycerzy, budząc w nich głębokie poczucie jedności i wspólnego celu. Dla Krzyżaków natomiast, "Bogurodzica" stała się 
+        zwiastunem nadchodzącej klęski. Twoi rycerze ruszyli do ataku!`,
         options: [
-            { text: "", feedback: "neutral", nextStage: 'stage3' }
+            { text: "Dalej", feedback: "neutral", nextStage: 'stage3' }
         ]
     },
     
     // Etap 2: W trakcie bitwy (Decyzje taktyczne)
     'stage2': {
-        text: ``,
+        text: `Bitwa rozpoczęła się z impetem! Prawe skrzydło, dowodzone przez Księcia Witolda, ruszyło jako pierwsze. Szarża litewsko-ruskich chorągwi 
+        uderzyła w krzyżackie szeregi. Artyleria Zakonu, spiesznie ustawiona, zdołała oddać zaledwie dwie salwy, które zatonęły w impetach naszych wojsk. 
+        Zacięta walka rozgorzała na dobre.
+        Po około godzinie krwawego starcia, sytuacja na prawym skrzydle stała się napięta. Potężna, ciężka jazda krzyżacka zaczęła zyskiwać przewagę nad wojskami litewskimi. 
+        Z przerażeniem patrzysz, jak chorągwie Księcia Witolda chwieją się, a następnie zaczynają cofać! Widzisz, jak część sił krzyżackich rzuca się 
+        w szaleńczą pogoń za pozornie uciekającymi oddziałami.
+        To jest moment krytyczny, Królu Władysławie. Cała uwaga Krzyżaków skupiła się na prawym skrzydle. Ale co z resztą twoich wojsk? Musisz podjąć decyzję, która ochroni 
+        cię przed klęską i wykorzysta zamieszanie w szeregach wroga. Co zrobisz w tej sytuacji?`,
         options: [
-            { text: "", feedback: "good", nextStage: 'stage2_info_good' },
-            { text: "", feedback: "bad", nextStage: 'stage2' },
-            { text: "", feedback: "bad", nextStage: 'stage2' }
+            { text: "Zarządź pozorowany odwrót prawego skrzydła", feedback: "good", nextStage: 'stage2_info_good' },
+            { text: "Samodzielnie, na czele osobistej straży wyrusz bohatersko ratować sytuację.", feedback: "bad", nextStage: 'stage2' },
+            { text: "Odpuść bitwę i sam wycofaj się do lasu.", feedback: "bad", nextStage: 'stage2' }
         ]
     },
     // Informacja po Dobrej Odpowiedzi w Etapie 2
     'stage2_info_good': {
-        text: ``,
+        text: `Twoja strategiczna intuicja okazała się trafna. Widzisz, jak wojska krzyżackie, zwiedzione pozornym odwrotem Litwinów, rzucają się w chaotyczny pościg." 
+                "Ich szeregi rozciągają się, a duma zaślepia ich tak, że nie dostrzegają pułapki. To właśnie na to czekałeś!`,
         options: [
-            { text: "", feedback: "neutral", nextStage: 'stage3' }
+            { text: "Dalej", feedback: "neutral", nextStage: 'stage3' }
         ]
     },
     // Etap 3: Decydujące uderzenie
     'stage3': {
-        text: ``,
+        text: `Bitwa weszła w decydującą fazę. Widzisz, jak Wielki Mistrz Ulrich von Jungingen rzuca do boju swój ostatni atut – odwody 16 chorągwi. 
+        Atak ten uderza w centrum twoich wojsk oraz w lewe skrzydło. Twoi rycerze walczą bohatersko, ale napór jest olbrzymi. Musisz działać, aby przechylić szalę zwycięstwa!
+        Na szczęście, w zanadrzu masz odwody polskiej jazdy, które czekają na twój rozkaz. Mogą one umożliwić zdecydowany atak lekkiej jeździe ukrytej w zaroślach i gotowej do decydującego uderzenia. 
+        Co zrobisz, aby rozerwać zasadniczy korpus sił krzyżackich i przypieczętować ich klęskę?`,
         options: [
-            { text: "", feedback: "good", nextStage: 'ending_victory' },
-            { text: "", feedback: "bad", nextStage: 'stage3' },
-            { text: "", feedback: "bad", nextStage: 'stage3' }
+            { text: "Rozkaż odwodom rozproszenie krzyżaków i umożliwienie ataku lekkiej jeździe", feedback: "good", nextStage: 'ending_victory' },
+            { text: "Rozkaż odwodom ukrycie się wraz z jazdą aby krzyżacy ich nie znaleźli", feedback: "bad", nextStage: 'stage3' },
+            { text: "Również ukryj się w zaroślach i udawaj, że należysz do lekkiej jazdy, aby krzyżacy cię nie znaleźli", feedback: "bad", nextStage: 'stage3' }
         ]
     },
     // Zakończenie: Zwycięstwo
     'ending_victory': {
-        text: ``,
+        text: `Powietrze drży od okrzyków triumfu, Królu Władysławie! Twoja decyzja o wprowadzeniu odwodów okazała się strzałem w dziesiątkę. 
+        Widzisz, jak twoje wojska, niczym potężna fala, zalały ostatnie punkty oporu Krzyżaków. Ich elitarne chorągwie, które miały przesądzić o ich zwycięstwie, 
+        zostały rozerwane na strzępy. Lekka jazda, ukryta w zaroślach, uderzyła w sam środek ich rozproszonych szeregów, przypieczętowując ich klęskę.
+        Pole bitwy pod Grunwaldem stało się świadkiem druzgocącej porażki Zakonu Krzyżackiego. Ich duma, arogancja i niekwestionowana dotąd potęga militarna zostały złamane. 
+        Widzisz uciekających rycerzy zakonnych, ściganych przez twoich wojowników. Sam Wielki Mistrz, Ulrich von Jungingen, poległ w trakcie bitwy, co symbolizuje ostateczny 
+        upadek ich potęgi.
+        To jest twoje zwycięstwo, Królu! Zwycięstwo, które zmieni bieg historii i zapewni chwałę tobie i twojemu Królestwu!`,
         options: [] // Koniec gry, brak dalszych opcji
     },
     // Komunikat o złej odpowiedzi
     'bad_answer_feedback': {
-        text: ``,
+        text: `Niestety, ta odpowiedź nie zapewni ci długiego panowania. Spróbuj ponownie!`,
         options: [
-            { text: "", feedback: "neutral", nextStage: null } // nextStage będzie ustawiony dynamicznie
+            { text: "Powróć do pytania", feedback: "neutral", nextStage: null } // nextStage będzie ustawiony dynamicznie
         ]
     }
 };
