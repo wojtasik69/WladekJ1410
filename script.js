@@ -12,23 +12,14 @@ let playerChoices = {}; // Obiekt do przechowywania wyborów gracza
 const gameData = {
     // Etap początkowy - intro
     'intro': {
-        text: `Nazywasz się Władysław II Jagiełło, król Polski, najwyższy książę litewski. Przed tobą stoi niezwykle trudne zadanie pokonania Zakonu Krzyżackiego
-        w bitwie która będzie znana jako słynna "Bitwa pod Grunwaldem"
-        Jest lipiec 1410 roku. Napięcie osiągnęło punkt kulminacyjny.
-        Krzyżacy, czując się silni i pewni swego, zwołali rycerstwo z całej Europy Zachodniej na "krucjatę" przeciwko tobie i twojemu zjednoczonemu królestwu.
-        Pomimo, że zawarłeś Unię z Litwą, a później Unię Horodelską, jednocząc oba państwa i przyjmując chrzest, nie osłabiło to argumentów Krzyżaków o „pogańskiej” Litwie,
-        jedynie zaogniło ich gniew. Ich cel jest jasny: zniszczyć twoje królestwo i przejąć kontrolę nad strategicznymi szlakami handlowymi i ziemiami.
-        Naprzeciwko ciebie, na polach pod Grunwaldem, stoi wojsko Zakonu – ciężkozbrojni rycerze, wspierani przez zaciężnych z całej Europy. W powietrzu czuć zapach
-        nadchodzącej bitwy, losy twojego królestwa i całej Europy zależą od twoich decyzji. Jesteś gotowy zmierzyć się z tym wyzwaniem?`,
+        text: `Nazywasz się Władysław II Jagiełło, król Polski, najwyższy książę litewski. Przed tobą stoi niezwykle trudne zadanie pokonania Zakonu Krzyżackiego w bitwie która będzie znana jako słynna "Bitwa pod Grunwaldem" Jest lipiec 1410 roku. Napięcie osiągnęło punkt kulminacyjny. Krzyżacy, czując się silni i pewni swego, zwołali rycerstwo z całej Europy Zachodniej na "krucjatę" przeciwko tobie i twojemu zjednoczonemu królestwu. Pomimo, że zawarłeś Unię z Litwą, a później Unię Horodelską, jednocząc oba państwa i przyjmując chrzest, nie osłabiło to argumentów Krzyżaków o „pogańskiej” Litwie, jedynie zaogniło ich gniew. Ich cel jest jasny: zniszczyć twoje królestwo i przejąć kontrolę nad strategicznymi szlakami handlowymi i ziemiami. Naprzeciwko ciebie, na polach pod Grunwaldem, stoi wojsko Zakonu – ciężkozbrojni rycerze, wspierani przez zaciężnych z całej Europy. W powietrzu czuć zapach nadchodzącej bitwy, losy twojego królestwa i całej Europy zależą od twoich decyzji. Jesteś gotowy zmierzyć się z tym wyzwaniem?`,
         options: [
             { text: "Dalej", feedback: "neutral", nextStage: 'start_game' }
         ]
     },
     // Rozpoczęcie gry i tło historyczne
     'start_game': {
-        text: `Budzisz się w swoim namiocie. Ze snu wytrącił cię hałas na zewnątrz. Do twojego obozu przybyli dwaj heroldowie od Wielkiego Mistrza Zakonu Krzyżackiego,
-        Ulricha von Jungingena. Mają czelność twierdzić, że z tchórzostwa próbujesz odłożyć bitwę w czasie. To nieprawda! Odciągasz ją aby słońce smażyło krzyżaków, podczas
-        gdy ty i twoi żołnierze odpoczywacie w cieniu lasu. Krzyżacy na pewno o tym wiedzą i chcą cię sprowokować do nieprzemyślanego ataku!`,
+        text: `Budzisz się w swoim namiocie. Ze snu wytrącił cię hałas na zewnątrz. Do twojego obozu przybyli dwaj heroldowie od Wielkiego Mistrza Zakonu Krzyżackiego, Ulricha von Jungingena. Mają czelność twierdzić, że z tchórzostwa próbujesz odłożyć bitwę w czasie. To nieprawda! Odciągasz ją aby słońce smażyło krzyżaków, podczas gdy ty i twoi żołnierze odpoczywacie w cieniu lasu. Krzyżacy na pewno o tym wiedzą i chcą cię sprowokować do nieprzemyślanego ataku!`,
         options: [
             { text: "Dalej", feedback: "neutral", nextStage: 'stage1' }
         ]
@@ -54,9 +45,7 @@ const gameData = {
 
     // Etap 1.5: Bogurodzica (nowa, unikalna nazwa)
     'stage1_5_bogurodzica': { // Zmieniono nazwę na unikalną
-        text: `Napięcie rośnie z każdą chwilą. Patrzysz na swoje wojska – tysiące serc bijących w oczekiwaniu na bitwę. Zanim poprowadzisz ich do walki,
-        musisz tchnąć w nich ducha jedności, wiary i odwagi. Potrzebujesz czegoś, co poruszy ich dusze, zjednoczy pod wspólnym sztandarem i sprawi,
-        że zapomną o strachu. Co najlepiej podniesie na duchu rycerzy polskich, litewskich, tatarskich i ruskich, stając się symbolem waszej wspólnej siły?`,
+        text: `Napięcie rośnie z każdą chwilą. Patrzysz na swoje wojska – tysiące serc bijących w oczekiwaniu na bitwę. Zanim poprowadzisz ich do walki, musisz tchnąć w nich ducha jedności, wiary i odwagi. Potrzebujesz czegoś, co poruszy ich dusze, zjednoczy pod wspólnym sztandarem i sprawi, że zapomną o strachu. Co najlepiej podniesie na duchu rycerzy polskich, litewskich, tatarskich i ruskich, stając się symbolem waszej wspólnej siły?`,
         options: [
             { text: "Bogurodzica, najstarszy zachowany polski tekst poetycki i pieśń religijna", feedback: "good", nextStage: 'stage1_5_info_good' }, // Zmieniono nextStage
             { text: "„Etiuda rewolucyjna” (Op. 10 nr 12), „Scherzo b-moll” napisane przez Fryderyka Chopina", feedback: "bad", nextStage: 'stage1_5_bogurodzica' }, // Wraca do tego samego etapu
@@ -65,9 +54,7 @@ const gameData = {
     },
     // Informacja po Dobrej Odpowiedzi w Etapie 1.5
     'stage1_5_info_good': { // Zmieniono nazwę na unikalną
-        text: `To była doskonała decyzja! Pieśń rozbrzmiała nad polami Grunwaldu, na zawsze zapisując się na kartach historii i podręcznikach języka polskiego.
-        Jej dźwięk przeniknął serca rycerzy, budząc w nich głębokie poczucie jedności i wspólnego celu. Dla Krzyżaków natomiast, "Bogurodzica" stała się
-        zwiastunem nadchodzącej klęski. Twoi rycerze ruszyli do ataku!`,
+        text: `To była doskonała decyzja! Pieśń rozbrzmiała nad polami Grunwaldu, na zawsze zapisując się na kartach historii i podręcznikach języka polskiego. Jej dźwięk przeniknął serca rycerzy, budząc w nich głębokie poczucie jedności i wspólnego celu. Dla Krzyżaków natomiast, "Bogurodzica" stała się zwiastunem nadchodzącej klęski. Twoi rycerze ruszyli do ataku!`,
         options: [
             { text: "Dalej", feedback: "neutral", nextStage: 'stage2_battle' } // Zmieniono nextStage na właściwy etap bitwy
         ]
@@ -75,14 +62,10 @@ const gameData = {
 
     // Etap 2: W trakcie bitwy (Decyzje taktyczne - właściwa bitwa)
     'stage2_battle': { // Zmieniono nazwę na unikalną
-        text: `Bitwa rozpoczęła się z impetem! Prawe skrzydło, dowodzone przez Księcia Witolda, ruszyło jako pierwsze. Szarża litewsko-ruskich chorągwi
-        uderzyła w krzyżackie szeregi. Artyleria Zakonu, spiesznie ustawiona, zdołała oddać zaledwie dwie salwy, które zatonęły w impetach naszych wojsk.
+        text: `Bitwa rozpoczęła się z impetem! Prawe skrzydło, dowodzone przez Księcia Witolda, ruszyło jako pierwsze. Szarża litewsko-ruskich chorągwi uderzyła w krzyżackie szeregi. Artyleria Zakonu, spiesznie ustawiona, zdołała oddać zaledwie dwie salwy, które zatonęły w impetach naszych wojsk.
         Zacięta walka rozgorzała na dobre.
-        Po około godzinie krwawego starcia, sytuacja na prawym skrzydle stała się napięta. Potężna, ciężka jazda krzyżacka zaczęła zyskiwać przewagę nad wojskami litewskimi.
-        Z przerażeniem patrzysz, jak chorągwie Księcia Witolda chwieją się, a następnie zaczynają cofać! Widzisz, jak część sił krzyżackich rzuca się
-        w szaleńczą pogoń za pozornie uciekającymi oddziałami.
-        To jest moment krytyczny, Królu Władysławie. Cała uwaga Krzyżaków skupiła się na prawym skrzydle. Ale co z resztą twoich wojsk? Musisz podjąć decyzję, która ochroni
-        cię przed klęską i wykorzysta zamieszanie w szeregach wroga. Co zrobisz w tej sytuacji?`,
+        Po około godzinie krwawego starcia, sytuacja na prawym skrzydle stała się napięta. Potężna, ciężka jazda krzyżacka zaczęła zyskiwać przewagę nad wojskami litewskimi. Z przerażeniem patrzysz, jak chorągwie Księcia Witolda chwieją się, a następnie zaczynają cofać! Widzisz, jak część sił krzyżackich rzuca się w szaleńczą pogoń za pozornie uciekającymi oddziałami. To jest moment krytyczny, Królu Władysławie. Cała uwaga Krzyżaków skupiła się na prawym skrzydle. Ale co z resztą twoich wojsk? Musisz podjąć decyzję, która ochroni cię przed klęską i wykorzysta zamieszanie w szeregach wroga. 
+        Co zrobisz w tej sytuacji?`,
         options: [
             { text: "Zarządź pozorowany odwrót prawego skrzydła", feedback: "good", nextStage: 'stage2_info_good' },
             { text: "Samodzielnie, na czele osobistej straży wyrusz bohatersko ratować sytuację.", feedback: "bad", nextStage: 'stage2_battle' },
@@ -99,9 +82,7 @@ const gameData = {
     },
     // Etap 3: Decydujące uderzenie
     'stage3': {
-        text: `Bitwa weszła w decydującą fazę. Widzisz, jak Wielki Mistrz Ulrich von Jungingen rzuca do boju swój ostatni atut – odwody 16 chorągwi.
-        Atak ten uderza w centrum twoich wojsk oraz w lewe skrzydło. Twoi rycerze walczą bohatersko, ale napór jest olbrzymi. Musisz działać, aby przechylić szalę zwycięstwa!
-        Na szczęście, w zanadrzu masz odwody polskiej jazdy, które czekają na twój rozkaz. Mogą one umożliwić zdecydowany atak lekkiej jeździe ukrytej w zaroślach i gotowej do decydującego uderzenia.
+        text: `Bitwa weszła w decydującą fazę. Widzisz, jak Wielki Mistrz Ulrich von Jungingen rzuca do boju swój ostatni atut – odwody 16 chorągwi. Atak ten uderza w centrum twoich wojsk oraz w lewe skrzydło. Twoi rycerze walczą bohatersko, ale napór jest olbrzymi. Musisz działać, aby przechylić szalę zwycięstwa! Na szczęście, w zanadrzu masz odwody polskiej jazdy, które czekają na twój rozkaz. Mogą one umożliwić zdecydowany atak lekkiej jeździe ukrytej w zaroślach i gotowej do decydującego uderzenia.
         Co zrobisz, aby rozerwać zasadniczy korpus sił krzyżackich i przypieczętować ich klęskę?`,
         options: [
             { text: "Rozkaż odwodom rozproszenie krzyżaków i umożliwienie ataku lekkiej jeździe", feedback: "good", nextStage: 'ending_victory' },
@@ -111,12 +92,7 @@ const gameData = {
     },
     // Zakończenie: Zwycięstwo
     'ending_victory': {
-        text: `Powietrze drży od okrzyków triumfu, Królu Władysławie! Twoja decyzja o wprowadzeniu odwodów okazała się strzałem w dziesiątkę.
-        Widzisz, jak twoje wojska, niczym potężna fala, zalały ostatnie punkty oporu Krzyżaków. Ich elitarne chorągwie, które miały przesądzić o ich zwycięstwie,
-        zostały rozerwane na strzępy. Lekka jazda, ukryta w zaroślach, uderzyła w sam środek ich rozproszonych szeregów, przypieczętowując ich klęskę.
-        Pole bitwy pod Grunwaldem stało się świadkiem druzgocącej porażki Zakonu Krzyżackiego. Ich duma, arogancja i niekwestionowana dotąd potęga militarna zostały złamane.
-        Widzisz uciekających rycerzy zakonnych, ściganych przez twoich wojowników. Sam Wielki Mistrz, Ulrich von Jungingen, poległ w trakcie bitwy, co symbolizuje ostateczny
-        upadek ich potęgi.
+        text: `Powietrze drży od okrzyków triumfu, Królu Władysławie! Twoja decyzja o wprowadzeniu odwodów okazała się strzałem w dziesiątkę. Widzisz, jak twoje wojska, niczym potężna fala, zalały ostatnie punkty oporu Krzyżaków. Ich elitarne chorągwie, które miały przesądzić o ich zwycięstwie, zostały rozerwane na strzępy. Lekka jazda, ukryta w zaroślach, uderzyła w sam środek ich rozproszonych szeregów, przypieczętowując ich klęskę. Pole bitwy pod Grunwaldem stało się świadkiem druzgocącej porażki Zakonu Krzyżackiego. Ich duma, arogancja i niekwestionowana dotąd potęga militarna zostały złamane. Widzisz uciekających rycerzy zakonnych, ściganych przez twoich wojowników. Sam Wielki Mistrz, Ulrich von Jungingen, poległ w trakcie bitwy, co symbolizuje ostateczny upadek ich potęgi.
         To jest twoje zwycięstwo, Królu! Zwycięstwo, które zmieni bieg historii i zapewni chwałę tobie i twojemu Królestwu!`,
         options: [] // Koniec gry, brak dalszych opcji
     },
