@@ -28,7 +28,7 @@ const gameData = {
         wspierani przez zaciężnych z całej Europy. W powietrzu czuć zapach nadchodzącej bitwy.
         Losy twojego królestwa i całej Europy zależą od twoich decyzji. Jesteś gotowy zmierzyć się z tym wyzwaniem?`,
         options: [
-            { text: "Dalej", feedback: "neutral", nextStage: 'start_game' }
+            { text: "Dalej", nextStage: 'start_game' } // Usunięto 'feedback: "neutral"'
         ]
     },
     // Rozpoczęcie gry i tło historyczne
@@ -42,7 +42,7 @@ const gameData = {
 
         Krzyżacy na pewno o tym wiedzą i chcą cię sprowokować do nieprzemyślanego ataku!`,
         options: [
-            { text: "Dalej", feedback: "neutral", nextStage: 'stage1' }
+            { text: "Dalej", nextStage: 'stage1' } // Usunięto 'feedback: "neutral"'
         ]
     },
     // Etap 1: Przed Bitwą (Decyzje strategiczne) - Pytanie o heroldów
@@ -62,7 +62,7 @@ const gameData = {
         text: `Zachowałeś spokój i godność, nie dając się sprowokować arogancji Krzyżaków.
         Teraz jednak nadszedł czas, by podnieść morale twoich wojsk przed nadchodzącym starciem.`,
         options: [
-            { text: "Dalej", feedback: "neutral", nextStage: 'stage1_5_bogurodzica' }
+            { text: "Dalej", nextStage: 'stage1_5_bogurodzica' } // Usunięto 'feedback: "neutral"'
         ]
     },
 
@@ -90,7 +90,7 @@ const gameData = {
         i wspólnego celu. Dla Krzyżaków natomiast, "Bogurodzica" stała się
         zwiastunem nadchodzącej klęski. Twoi rycerze ruszyli do ataku!`,
         options: [
-            { text: "Dalej", feedback: "neutral", nextStage: 'stage2_battle' }
+            { text: "Dalej", nextStage: 'stage2_battle' } // Usunięto 'feedback: "neutral"'
         ]
     },
 
@@ -124,7 +124,7 @@ const gameData = {
         Ich szeregi rozciągają się, a duma zaślepia ich tak, że nie dostrzegają pułapki.
         To właśnie na to czekałeś!`,
         options: [
-            { text: "Dalej", feedback: "neutral", nextStage: 'stage3' }
+            { text: "Dalej", nextStage: 'stage3' } // Usunięto 'feedback: "neutral"'
         ]
     },
     // Etap 3: Decydujące uderzenie
@@ -251,6 +251,7 @@ async function handleChoice(chosenOption) {
         await displayStage(); // Wyświetl komunikat o złej odpowiedzi
     } else {
         // Jeśli to dobra odpowiedź lub zwykłe przejście
+        // Jeśli 'feedback' nie jest zdefiniowany (czyli jest to przycisk 'Dalej'), to też przechodzimy dalej
         if (chosenOption.choiceKey && chosenOption.choiceValue) {
             playerChoices[chosenOption.choiceKey] = chosenOption.choiceValue;
         }
