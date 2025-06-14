@@ -23,7 +23,7 @@ body {
     border: 3px solid #8B4513; /* Ciemny miedziany brąz, symbolizujący opancerzenie */
     border-radius: 10px;
     padding: 40px;
-    max-width: 850px;
+    max-width: 1050px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(255, 215, 0, 0.2); /* Cień i delikatna poświata złota */
     text-align: center;
     backdrop-filter: blur(3px); /* Delikatne rozmycie tła za kontenerem */
